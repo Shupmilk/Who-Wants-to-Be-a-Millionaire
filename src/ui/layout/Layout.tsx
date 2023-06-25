@@ -19,17 +19,19 @@ const Layout = ({title, subtitle, link}: LayoutProps) => {
 		<section className="layout">
 			<div className="layout-container">
 				<div className="layout__col layout__col_left">
-					<img src={thumb} alt="thumb" />
+					<img src={thumb} alt="thumb" className="layout__image" />
 				</div>
 				<div className="layout__col layout__col_right">
-					{subtitle && (
-						<h3 className="layout__subtitle">
-							{subtitle}
-						</h3>
-					)}
-					<h1 className="layout__title">
-						{title}
-					</h1>
+					<div className="layout__heading">
+						{subtitle && (
+							<h3 className="layout__subtitle">
+								{subtitle}
+							</h3>
+						)}
+						<h1 className="layout__title">
+							{title}
+						</h1>
+					</div>
 					<Link to={link.to} text={link.text} onClick={link.onClick} />
 				</div>
 			</div>

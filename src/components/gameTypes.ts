@@ -1,5 +1,3 @@
-// gameTypes.ts
-
 export interface GameQuestion {
 	question: string;
 	options: string[];

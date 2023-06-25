@@ -78,8 +78,6 @@ const Game = () => {
 							<button onClick={handleNextQuestion} disabled={selectedOption === ''}>
 								Next Question
 							</button>
-
-							<h3>Total: {totalRewards}</h3>
 						</div>
 					</>
 				)}
