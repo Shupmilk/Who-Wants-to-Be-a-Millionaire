@@ -12,7 +12,6 @@
     line-height: 116%;
 }
 
-
 .game-questions-container {
     display: grid;
     grid-template-columns: max-content max-content;

@@ -23,7 +23,7 @@ const Questions = ({currentQuestion, isSelected, selectedOption, isCorrectAnswer
 				{currentQuestion.options.map((option: string, index: number) => (
 					<button
 						key={option}
-						className={cx(`game-questions__item`, {
+						className={cx('game-questions__item', {
 							[`game-questions__item_color_selected`]: isSelected && selectedOption === option,
 							[`game-questions__item_color_correct`]: isCorrectAnswer && !isSelected && selectedOption === option,
 							[`game-questions__item_color_wrong`]: !isCorrectAnswer && !isSelected && selectedOption === option,

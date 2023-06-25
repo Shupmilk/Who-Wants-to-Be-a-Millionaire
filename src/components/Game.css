@@ -7,17 +7,3 @@
     background-color: var(--black-5);
 }
 
-.game-rewards {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.game-rewards-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 8px;
-}
-

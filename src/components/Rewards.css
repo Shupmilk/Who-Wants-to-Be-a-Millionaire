@@ -1,0 +1,71 @@
+.game-rewards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.game-rewards-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 8px;
+    color: var(--black-100);
+}
+
+.game-rewards-list__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 405px;
+    height: 40px;
+    background: transparent;
+    font-size: 20px;
+    z-index: 2;
+}
+
+.game-rewards-list__item:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    width: 100%;
+    background: var(--black-40);
+    z-index: -1;
+}
+
+.game-rewards-list__item .game-rewards-list__item:before {
+    stroke: var(--orange-100);
+    background-color: var(--orange-100);
+}
+
+.game-rewards-list__item_current,
+.game-rewards-list__item_current .game-rewards-list__bg  {
+    color: var(--orange-100);
+    stroke: var(--orange-100);
+}
+
+.game-rewards-list__item_current.game-rewards-list__item_current:before {
+    background-color: var(--orange-100);
+}
+
+.game-rewards-list__item_passed {
+    color: var(--black-40);
+}
+
+.game-rewards-list__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    fill: var(--white-100);
+    stroke: var(--black-40);
+    z-index: -1;
+    transition: all .1s ease;
+}

@@ -8,8 +8,9 @@ import {
 	nextQuestion,
 	gameOver,
 } from '../redux/actions/gameActions';
-import './Game.css';
 import Questions from './Questions';
+import Rewards from './Rewards';
+import './Game.css';
 
 const Game = () => {
 	const navigate = useNavigate();
@@ -20,12 +21,7 @@ const Game = () => {
 	const [isCorrectAnswer, setIsCorrectAnswer] = useState(true);
 	const [isSelected, setIsSelected] = useState(false);
 
-	useEffect(() => {
-		if (currentQuestionIndex >= questions.length) {
-			dispatch(gameOver());
-			navigate('/game-over');
-		}
-	}, [currentQuestionIndex, dispatch, navigate, questions]);
+	const currentQuestion = questions[currentQuestionIndex];
 
 	const handleNextQuestion = useCallback(
 		(option: string) => {
@@ -60,9 +56,12 @@ const Game = () => {
 		[currentQuestionIndex, dispatch, navigate, questions]
 	);
 
-	const currentQuestion = questions[currentQuestionIndex];
-
-	const rewards = [...questions].reverse();
+	useEffect(() => {
+		if (currentQuestionIndex >= questions.length) {
+			dispatch(gameOver());
+			navigate('/game-over');
+		}
+	}, [currentQuestionIndex, dispatch, navigate, questions]);
 
 	return (
 		<main className="game">
@@ -78,18 +77,7 @@ const Game = () => {
 				)}
 			</section>
 			<section className="game__col game__col_right">
-				<div className="game-rewards">
-					<ul className="game-rewards-list">
-						{rewards.map(({ reward }) => (
-							<li
-								key={reward}
-								className="game-rewards-list__item"
-							>
-								${reward}
-							</li>
-						))}
-					</ul>
-				</div>
+				<Rewards rewards={[...questions].reverse()} />
 			</section>
 		</main>
 	);
