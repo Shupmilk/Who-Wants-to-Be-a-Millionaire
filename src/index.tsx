@@ -1,13 +1,10 @@
 import React from 'react';
 import {createRoot, Root} from 'react-dom/client';
 import {Provider} from 'react-redux';
-import rootReducer from './redux/reducers';
 import App from './App';
-import {configureStore} from '@reduxjs/toolkit';
 import {BrowserRouter} from 'react-router-dom';
 import './index.css';
-
-const store = configureStore({reducer: rootReducer})
+import store from './redux/store/store';
 
 const container: HTMLElement | null = document.getElementById('root');
 

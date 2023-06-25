@@ -8,7 +8,7 @@ export type Question = {
 export type GameState = {
 	currentQuestionIndex: number;
 	score: number;
-	totalRewards: number;
+	totalRewards: string;
 	questions: Question[];
 	gameOver: boolean;
 };

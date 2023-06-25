@@ -8,14 +8,18 @@ const GameOver: React.FC = () => {
 	const dispatch = useDispatch();
 	const totalRewards = useSelector((state: RootState['game']) => state.totalRewards);
 
+	const handleResetGameValues = () => {
+		dispatch(resetGame());
+	}
+
 	return (
 		<Layout
-			title={`${totalRewards} earned`}
+			title={`$${totalRewards} earned`}
 			subtitle="Total score:"
 			link={{
 				to: '/game',
 				text: 'Try again',
-				onClick: () => dispatch(resetGame())
+				onClick: handleResetGameValues,
 			}}
 		/>
 	)

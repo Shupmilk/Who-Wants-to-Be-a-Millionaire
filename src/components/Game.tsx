@@ -1,8 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
-import {setCurrentQuestionIndex, answerQuestion, nextQuestion, gameOver, resetGame} from '../redux/actions/gameActions';
-import {RootState} from '../redux/store';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { RootState } from '../redux/store';
+import {
+	setCurrentQuestionIndex,
+	answerQuestion,
+	nextQuestion,
+	gameOver,
+} from '../redux/actions/gameActions';
 import './Game.css';
 
 const Game = () => {
@@ -10,82 +15,71 @@ const Game = () => {
 	const dispatch = useDispatch();
 	const currentQuestionIndex = useSelector((state: RootState['game']) => state.currentQuestionIndex);
 	const questions = useSelector((state: RootState['game']) => state.questions);
-	const totalRewards = useSelector((state: RootState['game']) => state.totalRewards);
 	const [selectedOption, setSelectedOption] = useState('');
-	const [isCorrectAnswer, setIsCorrectAnswer] = useState(true);
 
 	useEffect(() => {
 		if (currentQuestionIndex >= questions.length) {
 			dispatch(gameOver());
 			navigate('/game-over');
 		}
-	}, [currentQuestionIndex, dispatch, navigate, questions.length]);
+	}, [currentQuestionIndex, dispatch, navigate, questions]);
 
-	const handleNextQuestion = () => {
-		if (selectedOption) {
-			const currentQuestion = questions[currentQuestionIndex];
-			const isAnswerCorrect = currentQuestion.correctAnswers.includes(selectedOption);
+	const handleNextQuestion = useCallback(
+		(option: string) => {
+			setSelectedOption(option);
+			if (option) {
+				const currentQuestion = questions[currentQuestionIndex];
+				const isAnswerCorrect = currentQuestion.correctAnswers.includes(option);
 
-			if (isAnswerCorrect) {
-				dispatch(answerQuestion(selectedOption));
-				setSelectedOption('');
-				dispatch(nextQuestion());
-				dispatch(setCurrentQuestionIndex(currentQuestionIndex + 1));
-			} else {
-				// setIsCorrectAnswer(false);
-				setTimeout(() => {
+
+				if (isAnswerCorrect) {
+					dispatch(answerQuestion(option));
+					dispatch(setCurrentQuestionIndex(currentQuestionIndex));
+					dispatch(nextQuestion());
 					setSelectedOption('');
-					// setIsCorrectAnswer(true);
-					dispatch(resetGame()); // Reset the game state
-					navigate('/game-over');
-				}, 2000);
+				} else {
+					setTimeout(() => {
+						navigate('/game-over');
+					}, 1000);
+				}
 			}
-		}
-	};
-
-
-	const handleOptionSelect = (option: string) => {
-		setSelectedOption(option);
-	};
+		},
+		[currentQuestionIndex, dispatch, navigate, questions]
+	);
 
 	const currentQuestion = questions[currentQuestionIndex];
 
-	const rewards = ['$500', '$1000', '$2000'];
+	const rewards = [...questions].reverse();
+
+	const optionLetters = ['A', 'B', 'C', 'D'];
 
 	return (
 		<main className="game">
 			<section className="game-questions">
 				{currentQuestion && (
 					<>
-						<h1>Question {currentQuestionIndex + 1}</h1>
-						<div>
-							<p>{currentQuestion.question}</p>
-							<div>
-								{currentQuestion.options.map((option: string, index: number) => (
-									<button
-										key={index}
-										// onClick={() => {
-										// 	handleOptionSelect(option);
-										// 	handleNextQuestion();
-										// }}
-										onClick={() => handleOptionSelect(option)}
-										disabled={selectedOption !== ''}
-									>
-										{option}
-									</button>
-								))}
-							</div>
-							<button onClick={handleNextQuestion} disabled={selectedOption === ''}>
-								Next Question
-							</button>
+						<h1 className="game-questions__title">{currentQuestion.question}</h1>
+						<div className="game-questions-container">
+							{currentQuestion.options.map((option: string, index: number) => (
+								<button
+									key={option}
+									onClick={() => {
+										handleNextQuestion(option);
+									}}
+									disabled={selectedOption !== '' && selectedOption !== option}
+									className={`game-questions__item`}
+								>
+									<span className="game-questions__letter">{optionLetters[index]}</span> {option}
+								</button>
+							))}
 						</div>
 					</>
 				)}
 			</section>
 			<section className="game-rewards">
 				<ul>
-					{rewards.map((reward) => (
-						<li key={reward}>{reward}</li>
+					{rewards.map(({ reward }) => (
+						<li key={reward}>${reward}</li>
 					))}
 				</ul>
 			</section>

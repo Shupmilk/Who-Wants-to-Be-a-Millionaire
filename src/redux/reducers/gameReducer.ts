@@ -1,5 +1,3 @@
-// gameReducer.js
-
 import { ActionTypes } from '../actions/gameActions';
 import gameConfig from '../../data/gameConfig.json'
 
@@ -7,7 +5,7 @@ const initialState = {
 	currentQuestionIndex: 0,
 	questions: gameConfig,
 	gameOver: false,
-	totalRewards: 0,
+	totalRewards: '0',
 };
 
 const gameReducer = (state = initialState, action: any) => {
@@ -18,14 +16,16 @@ const gameReducer = (state = initialState, action: any) => {
 				currentQuestionIndex: action.payload,
 			};
 		case ActionTypes.ANSWER_QUESTION:
-			const { currentQuestionIndex, questions, totalRewards } = state;
+			const { currentQuestionIndex, questions } = state;
 			const currentQuestion = questions[currentQuestionIndex];
 			const isAnswerCorrect = currentQuestion.correctAnswers.includes(action.payload);
-			const reward = isAnswerCorrect ? currentQuestion.reward : 0;
+			const previousReward = currentQuestionIndex > 0 ? questions[currentQuestionIndex - 1].reward : '0';
+
+			const reward = isAnswerCorrect ? currentQuestion.reward : previousReward;
 
 			return {
 				...state,
-				totalRewards: totalRewards + Number(reward),
+				totalRewards: reward,
 			};
 		case ActionTypes.NEXT_QUESTION:
 			return {

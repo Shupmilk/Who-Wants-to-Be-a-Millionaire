@@ -16,8 +16,8 @@ type LayoutProps = {
 
 const Layout = ({title, subtitle, link}: LayoutProps) => {
 	return (
-		<section className="layout">
-			<div className="layout-container">
+		<main className="layout">
+			<section className="layout-container">
 				<div className="layout__col layout__col_left">
 					<img src={thumb} alt="thumb" className="layout__image" />
 				</div>
@@ -34,8 +34,8 @@ const Layout = ({title, subtitle, link}: LayoutProps) => {
 					</div>
 					<Link to={link.to} text={link.text} onClick={link.onClick} />
 				</div>
-			</div>
-		</section>
+			</section>
+		</main>
 	);
 };
 

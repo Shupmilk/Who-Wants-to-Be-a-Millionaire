@@ -1,6 +1,3 @@
-// gameActions.ts
-// In actions/gameActions.js
-
 export const ActionTypes = {
 	SET_CURRENT_QUESTION_INDEX: 'SET_CURRENT_QUESTION_INDEX',
 	ANSWER_QUESTION: 'ANSWER_QUESTION',
