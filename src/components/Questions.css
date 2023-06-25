@@ -51,12 +51,14 @@
 .game-questions__item_color_correct:hover .game-questions__bg {
     stroke: var(--green-100);
     fill: var(--green-5);
+    animation: blink .3s linear infinite;
 }
 
 .game-questions__item_color_wrong .game-questions__bg,
 .game-questions__item_color_wrong:hover .game-questions__bg {
     stroke: var(--red-100);
     fill: var(--red-5);
+    animation: blink .3s linear infinite;
 }
 
 .game-questions__bg {
@@ -81,4 +83,10 @@
     .game-questions__title {
         font-size: 32px;
     }
+}
+
+@keyframes blink {
+    0%{opacity: 0;}
+    50%{opacity: .5;}
+    100%{opacity: 1;}
 }

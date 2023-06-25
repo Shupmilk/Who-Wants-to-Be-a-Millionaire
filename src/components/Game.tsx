@@ -41,7 +41,7 @@ const Game = () => {
 							dispatch(setCurrentQuestionIndex(currentQuestionIndex));
 							dispatch(nextQuestion());
 							setSelectedOption('');
-						}, 500);
+						}, 1000);
 					}
 
 					if (!isAnswerCorrect) {
