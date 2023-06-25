@@ -1,0 +1,74 @@
+[
+  {
+    "question": "What is the color of the White House?",
+    "options": ["Pink", "Blue", "White", "Rainbow"],
+    "correctAnswers": ["White"],
+    "reward": 500
+  },
+  {
+    "question": "How many legs does a spider typically have?",
+    "options": ["100", "2", "8", "4"],
+    "correctAnswers": ["8"],
+    "reward": 500
+  },
+  {
+    "question": "What do you call a group of crows?",
+    "options": ["A flock", "A murder", "A gaggle", "A herd"],
+    "correctAnswers": ["A gaggle"],
+    "reward": 1000
+  },
+  {
+    "question": "What is the capital of Australia?",
+    "options": ["Sydney", "Melbourne", "Brisbane", "Canberra"],
+    "correctAnswers": ["Canberra"],
+    "reward": 2000
+  },
+  {
+    "question": "What is the world's largest ocean?",
+    "options": ["Atlantic", "Indian", "Pacific", "Arctic"],
+    "correctAnswers": ["Pacific"],
+    "reward": 4000
+  },
+  {
+    "question": "Who wrote the \"Game of Thrones\" series of books?",
+    "options": ["J.K. Rowling", "George R. R. Martin", "Stephen King", "Suzanne Collins"],
+    "correctAnswers": ["George R. R. Martin"],
+    "reward": 8000
+  },
+  {
+    "question": "What is the square root of 144?",
+    "options": ["12", "14", "16", "18"],
+    "correctAnswers": ["12"],
+    "reward": 16000
+  },
+  {
+    "question": "Which planet is known as the \"Red Planet\"?",
+    "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+    "correctAnswers": ["Mars"],
+    "reward": 32000
+  },
+  {
+    "question": "What is the chemical symbol for gold?",
+    "options": ["Gd", "Go", "Au", "Ag"],
+    "correctAnswers": ["Au"],
+    "reward": 61000
+  },
+  {
+    "question": "Who painted the Mona Lisa?",
+    "options": ["Vincent Van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"],
+    "correctAnswers": ["Leonardo da Vinci"],
+    "reward": 125000
+  },
+  {
+    "question": "What is the name of the longest river in the world?",
+    "options": ["Amazon", "Nile", "Yangtze", "Mississippi"],
+    "correctAnswers": ["Nile"],
+    "reward": 250000
+  },
+  {
+    "question": "Who was the first person to walk on the moon?",
+    "options": ["Buzz Aldrin", "Neil Armstrong", "Yuri Gagarin", "Michael Collins"],
+    "correctAnswers": ["Neil Armstrong"],
+    "reward": 500000
+  }
+]

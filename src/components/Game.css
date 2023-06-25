@@ -1,0 +1,20 @@
+.game {
+    display: grid;
+    grid-template-columns: 1fr 376px;
+}
+
+.game-questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 133px 80px 122px;
+}
+
+
+.game-rewards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
