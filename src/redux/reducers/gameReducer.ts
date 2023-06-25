@@ -1,7 +1,8 @@
 import { ActionTypes } from '../actions/gameActions';
 import gameConfig from '../../data/gameConfig.json'
+import {InitialStateTypes} from '../types/types';
 
-const initialState = {
+const initialState: InitialStateTypes = {
 	currentQuestionIndex: 0,
 	questions: gameConfig,
 	gameOver: false,

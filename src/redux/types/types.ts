@@ -1,3 +1,8 @@
+
+export interface RootState {
+	game: GameState;
+}
+
 export type Question = {
 	question: string;
 	options: string[];
@@ -13,6 +18,16 @@ export type GameState = {
 	gameOver: boolean;
 };
 
-export interface RootState {
-	game: GameState;
+export type GameConfigTypes = {
+	question: string;
+	options: string[];
+	correctAnswers: string[];
+	reward: string;
+}
+
+export type InitialStateTypes = {
+	currentQuestionIndex: number,
+	questions: GameConfigTypes[],
+	gameOver: boolean,
+	totalRewards: string,
 }

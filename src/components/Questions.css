@@ -1,0 +1,85 @@
+.game-questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 133px 80px 122px;
+}
+
+.game-questions__title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 116%;
+}
+
+
+.game-questions-container {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-gap: 32px 0;
+}
+
+.game-questions__item {
+    position: relative;
+    border: none;
+    width: 405px;
+    height: 72px;
+    outline: none;
+    background: transparent;
+    padding: 25px 60px;
+    font-size: 20px;
+    text-align: left;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.game-questions__item:disabled {
+    pointer-events: none;
+    color: inherit;
+}
+
+.game-questions__item:hover .game-questions__bg {
+    stroke: var(--orange-100);
+}
+
+.game-questions__item_color_selected .game-questions__bg,
+.game-questions__item_color_selected:hover .game-questions__bg {
+    stroke: var(--orange-100);
+    fill: var(--orange-5);
+}
+
+.game-questions__item_color_correct  .game-questions__bg,
+.game-questions__item_color_correct:hover .game-questions__bg {
+    stroke: var(--green-100);
+    fill: var(--green-5);
+}
+
+.game-questions__item_color_wrong .game-questions__bg,
+.game-questions__item_color_wrong:hover .game-questions__bg {
+    stroke: var(--red-100);
+    fill: var(--red-5);
+}
+
+.game-questions__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    fill: var(--white-100);
+    stroke: var(--black-40);
+    z-index: -1;
+    transition: all .1s ease;
+}
+
+.game-questions__letter {
+    color: var(--orange-100);
+    margin-right: 8px;
+}
+
+@media (min-width: 1280px) {
+    .game-questions__title {
+        font-size: 32px;
+    }
+}
