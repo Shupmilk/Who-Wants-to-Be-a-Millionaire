@@ -1,9 +1,12 @@
 .layout {
-    background: var(--white-100);
-    background: linear-gradient(to right bottom, var(--white-100) 50%, var(--orange-5) 50%);
+    background: var(--black-5) linear-gradient(to right bottom, var(--white-100) 50%, var(--orange-5) 50%);
     min-height: 100vh;
     margin: 0 auto;
     padding: 0 16px;
+}
+
+.layout_bg_light {
+    background: var(--black-5);
 }
 
 .layout-container {

@@ -1,25 +1,29 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { RootState } from '../redux/store';
+import React, {useState, useEffect, useCallback, useMemo} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
+import {RootState} from '../redux/store';
 import {
 	setCurrentQuestionIndex,
 	answerQuestion,
 	nextQuestion,
 	gameOver,
 } from '../redux/actions/gameActions';
-import Questions from './Questions';
-import Rewards from './Rewards';
+import Questions from '../components/Questions';
+import Rewards from '../components/Rewards';
+import BurgerMenu from '../ui/menu/BurgerMenu';
 import './Game.css';
 
 const Game = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const currentQuestionIndex = useSelector((state: RootState['game']) => state.currentQuestionIndex);
+	const currentQuestionIndex = useSelector(
+		(state: RootState['game']) => state.currentQuestionIndex
+	);
 	const questions = useSelector((state: RootState['game']) => state.questions);
 	const [selectedOption, setSelectedOption] = useState('');
 	const [isCorrectAnswer, setIsCorrectAnswer] = useState(true);
 	const [isSelected, setIsSelected] = useState(false);
+	const [shouldDisplayMenu, setShouldDisplayMenu] = useState(false);
 
 	const currentQuestion = questions[currentQuestionIndex];
 
@@ -63,22 +67,34 @@ const Game = () => {
 		}
 	}, [currentQuestionIndex, dispatch, navigate, questions]);
 
+	useEffect(() => {
+		const handleResize = () => {
+			setShouldDisplayMenu(window.innerWidth < 1280);
+		};
+
+		window.addEventListener('resize', handleResize);
+		handleResize();
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+
+	const reversedRewards = useMemo(() => [...questions].reverse(), [questions]);
+
 	return (
 		<main className="game">
-			<section className="game__col game__col_left">
-				{currentQuestion && (
-					<Questions
-						currentQuestion={currentQuestion}
-						isSelected={isSelected}
-						selectedOption={selectedOption}
-						isCorrectAnswer={isCorrectAnswer}
-						handleNextQuestion={handleNextQuestion}
-					/>
-				)}
-			</section>
-			<section className="game__col game__col_right">
-				<Rewards rewards={[...questions].reverse()} />
-			</section>
+			{shouldDisplayMenu && <BurgerMenu component={<Rewards rewards={reversedRewards}/>}/>}
+			{currentQuestion && (
+				<Questions
+					currentQuestion={currentQuestion}
+					isSelected={isSelected}
+					selectedOption={selectedOption}
+					isCorrectAnswer={isCorrectAnswer}
+					handleNextQuestion={handleNextQuestion}
+				/>
+			)}
+			{!shouldDisplayMenu && <Rewards rewards={reversedRewards}/>}
 		</main>
 	);
 };

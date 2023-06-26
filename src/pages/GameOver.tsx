@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
 import {resetGame} from '../redux/actions/gameActions';
@@ -8,9 +8,9 @@ const GameOver: React.FC = () => {
 	const dispatch = useDispatch();
 	const totalRewards = useSelector((state: RootState['game']) => state.totalRewards);
 
-	const handleResetGameValues = () => {
+	const handleResetGameValues = useCallback(() => {
 		dispatch(resetGame());
-	}
+	}, [dispatch]);
 
 	return (
 		<Layout
@@ -21,6 +21,7 @@ const GameOver: React.FC = () => {
 				text: 'Try again',
 				onClick: handleResetGameValues,
 			}}
+			isBgLight
 		/>
 	)
 };

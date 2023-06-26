@@ -9,7 +9,6 @@ declare global {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
 const store: Store = createStore(gameReducer, composeEnhancers());
 
 export default store;

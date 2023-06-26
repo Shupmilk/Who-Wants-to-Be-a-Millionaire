@@ -14,15 +14,20 @@
     color: var(--black-100);
 }
 
+.game-rewards-list,
+.game-rewards-list__item,
+.game-rewards-list__item-bg {
+    width: 100%;
+}
+
 .game-rewards-list__item {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 405px;
     height: 40px;
     background: transparent;
-    font-size: 20px;
+    font-size: 14px;
     z-index: 2;
 }
 
@@ -44,7 +49,7 @@
 }
 
 .game-rewards-list__item_current,
-.game-rewards-list__item_current .game-rewards-list__bg  {
+.game-rewards-list__item_current .game-rewards-list__item-bg  {
     color: var(--orange-100);
     stroke: var(--orange-100);
 }
@@ -57,15 +62,22 @@
     color: var(--black-40);
 }
 
-.game-rewards-list__bg {
+.game-rewards-list__item-bg {
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
+    height: 40px;
 
     fill: var(--white-100);
     stroke: var(--black-40);
     z-index: -1;
     transition: all .1s ease;
+}
+
+@media (min-width: 768px) {
+    .game-rewards-list__item {
+        font-size: 20px;
+    }
 }

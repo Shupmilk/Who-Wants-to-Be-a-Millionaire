@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import Link from '../Link/Link';
 import './Layout.css';
 
@@ -12,11 +13,12 @@ type LayoutProps = {
 		text: string,
 		onClick?: () => void,
 	},
+	isBgLight?: boolean,
 };
 
-const Layout = ({title, subtitle, link}: LayoutProps) => {
+const Layout = ({title, subtitle, link, isBgLight}: LayoutProps) => {
 	return (
-		<main className="layout">
+		<main className={cx('layout', {'layout_bg_light': isBgLight})}>
 			<section className="layout-container">
 				<div className="layout__col layout__col_left">
 					<img src={thumb} alt="thumb" className="layout__image" />

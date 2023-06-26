@@ -1,9 +1,0 @@
-.game {
-    display: grid;
-    grid-template-columns: 1fr 376px;
-}
-
-.game__col_left {
-    background-color: var(--black-5);
-}
-
