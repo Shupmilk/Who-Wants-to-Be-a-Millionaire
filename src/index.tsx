@@ -12,7 +12,7 @@ if (container) {
 	const root: Root = createRoot(container);
 	root.render(
 		<Provider store={store}>
-			<BrowserRouter>
+			<BrowserRouter basename="/who-wants-to-be-a-millionaire">
 				<App/>
 			</BrowserRouter>
 		</Provider>
