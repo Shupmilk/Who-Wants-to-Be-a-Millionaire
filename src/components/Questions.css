@@ -89,6 +89,7 @@
 
 .game-questions__text {
     font-size: 14px;
+    color: var(--black-100);
 }
 
 @media (min-width: 768px) {
