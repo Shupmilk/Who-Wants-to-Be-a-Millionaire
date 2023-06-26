@@ -17,7 +17,7 @@ const GameOver: React.FC = () => {
 			title={`$${totalRewards} earned`}
 			subtitle="Total score:"
 			link={{
-				to: '/game',
+				to: '/who-wants-to-be-a-millionaire/game',
 				text: 'Try again',
 				onClick: handleResetGameValues,
 			}}

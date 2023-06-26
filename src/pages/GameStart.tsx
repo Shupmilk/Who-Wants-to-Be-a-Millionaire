@@ -5,7 +5,7 @@ const GameStart: React.FC = () => {
 	return (
 		<Layout
 			title="Who wants to be a&nbsp;millionaire?"
-			link={{to: '/game', text: 'Start'}}
+			link={{to: '/who-wants-to-be-a-millionaire/game', text: 'Start'}}
 		/>
 	);
 };

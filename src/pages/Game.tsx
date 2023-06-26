@@ -51,7 +51,7 @@ const Game = () => {
 					if (!isAnswerCorrect) {
 						setIsCorrectAnswer(false);
 						setTimeout(() => {
-							navigate('/game-over');
+							navigate('/who-wants-to-be-a-millionaire/game-over');
 						}, 1000);
 					}
 				}
@@ -63,7 +63,7 @@ const Game = () => {
 	useEffect(() => {
 		if (currentQuestionIndex >= questions.length) {
 			dispatch(gameOver());
-			navigate('/game-over');
+			navigate('/who-wants-to-be-a-millionaire/game-over');
 		}
 	}, [currentQuestionIndex, dispatch, navigate, questions]);
 
